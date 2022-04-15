@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:31:51 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/13 02:09:34 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/15 18:57:41 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	ft_img_init(t_data *data)
 		   	&height);
 }
 
+
+
 void ft_choose_img(t_data *data, char c, int x, int y)
 {
 		if (c == '1')
@@ -68,6 +70,28 @@ void ft_choose_img(t_data *data, char c, int x, int y)
 		if (c == 'P')
 			mlx_put_image_to_window(data->mlx, data->win, data->player, x, y);
 }
+
+int	ft_choose_xyvalue(int x, int y, int a)
+{
+	if (a == 1)
+	{
+		if (x == 384)
+			x = x + 63;
+		else 
+			x = x + 64;
+		return (x);
+	}
+	if ( a == 0)
+	{
+		if (y == 128)
+			y = y + 63;
+		else 
+			y = y + 64;
+		return (y);
+	}
+	return (0);
+}
+
 
 void	ft_print_map(t_data *data)
 {
@@ -88,12 +112,11 @@ void	ft_print_map(t_data *data)
 		while (ptr[i][u])
 		{
 			ft_choose_img(data, ptr[i][u], x, y);
-			x = x + 64;
 			u++;
-			ft_printf("\nvaleur de x : %d", x);
+			x = ft_choose_xyvalue(x, y, 1);
 		}
-		y = y + 64;
-		ft_printf("\nvaleur de y : %d", y);
+		y  = ft_choose_xyvalue(x, y, 0);
 		i++;
 	}
+	ft_print_footsteps(data);
 }
