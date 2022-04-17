@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 17:01:48 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/13 01:12:31 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/17 20:36:45 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	control = BUFFER_SIZE;
-	while (ft_strchrG(str_save, 10) == -1 && control == BUFFER_SIZE)
+	while (ft_strchrg(str_save, 10) == -1 && control == BUFFER_SIZE)
 	{
 		str_line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if (str_line == NULL)
@@ -46,13 +46,13 @@ char	*ft_extract_line(char *str_save)
 
 	if (str_save == NULL)
 		return (NULL);
-	length = ft_strchrG(str_save, 10);
+	length = ft_strchrg(str_save, 10);
 	if (length == -1)
-		length = ft_strlenG(str_save);
+		length = ft_strleng(str_save);
 	ptr = malloc(sizeof(char) * (length + 2));
 	if (ptr == NULL)
 		return (NULL);
-	ft_strlcpyG(ptr, str_save, length + 2);
+	ft_strlcpyg(ptr, str_save, length + 2);
 	return (ptr);
 }
 
@@ -62,13 +62,13 @@ char	*ft_update_save(char *str_save)
 	int		j;
 	int		i;
 
-	i = ft_strchrG(str_save, 10);
+	i = ft_strchrg(str_save, 10);
 	if (i == -1)
 	{
 		free(str_save);
 		return (NULL);
 	}
-	j = ft_strlenG(str_save);
+	j = ft_strleng(str_save);
 	if ((i + 1) == j)
 	{
 		free(str_save);
@@ -77,7 +77,7 @@ char	*ft_update_save(char *str_save)
 	ptr = malloc(sizeof(char) * ((j - (i + 1)) + 1));
 	if (ptr == NULL)
 		return (NULL);
-	ft_strlcpyG(ptr, &str_save[i + 1], (j - (i + 1) + 1));
+	ft_strlcpyg(ptr, &str_save[i + 1], (j - (i + 1) + 1));
 	free(str_save);
 	return (ptr);
 }

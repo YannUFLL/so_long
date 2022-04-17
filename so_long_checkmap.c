@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 20:24:17 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/13 01:33:18 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/17 20:30:23 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	ft_check_rectangle(char **map)
 {
-	int i;
+	int	i;
 	int	u;
-	int	control; 
+	int	control;
 
 	i = 0;
 	u = 0;
 	while (map[0][i])
-		i++; 
+		i++;
 	control = i;
-	map++; 
+	map++;
 	while (map[u])
 	{
 		while (map[u][i])
@@ -38,7 +38,7 @@ int	ft_check_rectangle(char **map)
 int	ft_check_wall(char **map)
 {
 	int	length;
-   	int	u;	
+	int	u;
 
 	length = 0;
 	u = 0;
@@ -48,7 +48,7 @@ int	ft_check_wall(char **map)
 			return (1);
 		length++;
 	}
-	while(map[u + 1] != NULL)
+	while (map[u + 1] != NULL)
 	{
 		if (map[u][0] != '1' || map[u][length - 1] != '1')
 			return (1);
@@ -66,39 +66,60 @@ int	ft_check_wall(char **map)
 
 int	ft_check_item(char **map)
 {
-	int u;
-	int i;
-	int C;
-	int E;
-	int P;
+	t_cep	cep;
 
-	i = 0;
-	C = 0;
-	E = 0;
-	P = 0;
-	while (map[i])
+	cep.i = 0;
+	cep.c = 0;
+	cep.e = 0;
+	cep.p = 0;
+	while (map[cep.i])
 	{
-		u = 0;
-		while (map[i][u])
+		cep.u = 0;
+		while (map[cep.i][cep.u])
 		{
-			if (map[i][u] == 'C')
-				C = 1;
-			if (map[i][u] == 'E')
-				E = 1;
-			if (map[i][u] == 'P')
-				P = 1;
-			u++;
+			if (map[cep.i][cep.u] == 'E')
+				cep.c = 1;
+			if (map[cep.i][cep.u] == 'E')
+				cep.e = 1;
+			if (map[cep.i][cep.u] == 'P')
+				cep.p = 1;
+			cep.u++;
 		}
-		i++;
+		cep.i++;
 	}
-	if (C == 1 && E == 1 && P == 1)
+	if (cep.c == 1 && cep.e == 1 && cep.p == 1)
 		return (0);
 	return (1);
 }
 
+void	ft_put_monster(char **map)
+{
+	int	stop;
+	int	x;
+	int	y;
+
+	y = 0;
+	x = 0;
+	stop = 0;
+	while (map[y][x] && !stop)
+	{
+		while (map[y][x] && !stop)
+		{
+			if (map[y][x] == '0')
+			{
+				map[y][x] = 'M';
+				return ;
+			}
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+}
+
 int	ft_check_map(char **map)
 {
-	if (map == NULL) 
+	if (map == NULL)
 		return (1);
 	if (ft_check_rectangle(map))
 	{
@@ -107,7 +128,7 @@ int	ft_check_map(char **map)
 	}
 	if (ft_check_wall(map))
 	{
-	  	ft_printf("Error\nThe map is not wall framed");	  
+		ft_printf("Error\nThe map is not wall framed");
 		return (1);
 	}
 	if (ft_check_item(map))
@@ -115,5 +136,6 @@ int	ft_check_map(char **map)
 		ft_printf("Error\nMissing items");
 		return (1);
 	}
+	ft_put_monster(map);
 	return (0);
 }

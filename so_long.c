@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:32:24 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/15 19:03:17 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/17 21:30:36 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,37 @@
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	int collect;
+	int		collect;
+	int		random;
 
 	if (argc < 1 || argc > 2)
 	{
 		ft_printf("Error");
 		return (0);
 	}
+	random = 0;
 	data.map = ft_create_tab(argv[1]);
-	if(ft_check_map(data.map))
+	if (ft_check_map(data.map))
 		return (0);
 	collect = ft_number_item(data.map);
 	data.collect = &collect;
+	data.k = &random;
 	data.mlx = mlx_init();
-	ft_printf("height : %d", ft_map_height(data.map));
-	data.win = mlx_new_window(data.mlx, ft_map_length(data.map),ft_map_height(data.map), "so_long");
-	//mlx_key_hook(vars.win, key_hook, &vars);
-	//data.exit = mlx_png_file_to_image(data.mlx, "./img/exit.png", &width, &height);
+	data.win = mlx_new_window(data.mlx, ft_map_length(data.map),
+			ft_map_height(data.map), "so_long");
 	ft_img_init(&data);
 	ft_print_map(&data);
 	mlx_key_hook(data.win, ft_key_hook, &data);
-	//mlx_loop_hook(data.mlx, ft_sprite_monster, &data);
-	//mlx_put_image_to_window(data.mlx, data.win, data.exit, 50, 50);
+	mlx_loop_hook(data.mlx, ft_sprite_monster, &data);
 	mlx_loop(data.mlx);
 }
 
-char **ft_create_tab(char *file)
+char	**ft_create_tab(char *file)
 {
-	int fd;
-	char *ptr;
-	char **map;
-	char *ex_ptr;
+	int		fd;
+	char	*ptr;
+	char	**map;
+	char	*ex_ptr;
 
 	fd = open(file, O_RDONLY);
 	ptr = NULL;

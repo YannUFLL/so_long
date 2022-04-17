@@ -6,13 +6,13 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 14:29:00 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/13 01:11:48 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/17 20:36:10 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlenG(const char *s)
+size_t	ft_strleng(const char *s)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t	ft_strlenG(const char *s)
 	return (i - 1);
 }
 
-int	ft_strchrG(const char *s, int c)
+int	ft_strchrg(const char *s, int c)
 {
 	int	i;
 
@@ -49,7 +49,7 @@ char	*ft_strjoin_andfree_s1(char *s1, const char *s2)
 	int		i;
 	int		j;
 
-	size = ft_strlenG(s1) + ft_strlenG(s2);
+	size = ft_strleng(s1) + ft_strleng(s2);
 	ptr = malloc(sizeof(char) * (size + 1));
 	if (ptr == NULL)
 		return (0);
@@ -71,7 +71,7 @@ char	*ft_strjoin_andfree_s1(char *s1, const char *s2)
 	return (ptr);
 }
 
-size_t	ft_strlcpyG(char *dst, char *src, size_t dstsize)
+size_t	ft_strlcpyg(char *dst, char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	length;
