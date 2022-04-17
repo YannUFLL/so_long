@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 22:32:24 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/17 21:30:36 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/17 23:31:39 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int argc, char **argv)
 		return (0);
 	collect = ft_number_item(data.map);
 	data.collect = &collect;
-	data.k = &random;
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, ft_map_length(data.map),
 			ft_map_height(data.map), "so_long");

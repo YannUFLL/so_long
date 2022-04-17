@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/17 18:34:57 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/17 20:49:03 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/17 22:15:04 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_choose_sprite(t_data	*data, int x, int y)
 	if (img == 3)
 	{
 		img = 0;
-		ft_ia(data->map, data->k);
+		ft_ia(data->map);
 		ft_print_map(data);
 	}
 	else

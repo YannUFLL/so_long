@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:31:51 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/17 21:30:14 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/17 23:33:30 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_choose_xyvalue(int x, int y, int a)
 {
 	if (a == 1)
 	{
-		if (x == 384)
+		if (x == 384 || x == 1087)
 			x = x + 63;
 		else
 			x = x + 64;
@@ -70,7 +70,7 @@ int	ft_choose_xyvalue(int x, int y, int a)
 	}
 	if (a == 0)
 	{
-		if (y == 128)
+		if (y == 128 || y == 191)
 			y = y + 63;
 		else
 			y = y + 64;

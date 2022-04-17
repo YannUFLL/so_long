@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 20:07:56 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/17 21:30:47 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/17 22:15:09 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct data {
 	void	*win;
 	char	**map;
 	int		*collect;
-	int		*k;
 }				t_data;
 
 typedef struct cep {
@@ -61,7 +60,7 @@ void	ft_print_footsteps(t_data *data, char a);
 int		ft_if_end(t_data *data, int line, int column);
 void	ft_get_posm(char **map, int *line, int *column);
 int		ft_sprite_monster(t_data *data);
-void	ft_ia(char **map, int *k);
+void	ft_ia(char **map);
 void	ft_img_init2(t_data *data);
 void	ft_choose_sprite(t_data *data, int x, int y);
 void	ft_exit(char **map);
