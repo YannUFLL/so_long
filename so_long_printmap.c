@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 20:31:51 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/17 23:33:30 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/18 18:15:20 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,13 @@ void	ft_img_init(t_data *data)
 
 void	ft_choose_img(t_data *data, char c, int x, int y)
 {
-	if (c == '1')
+	static int	k;
+
+	if (y == 0 && x == 0)
+		k++;
+	if (c == '1' && k == 1)
+		mlx_put_image_to_window(data->mlx, data->win, data->tree, x, y);
+	if (c == '1' && (x > 192 || (y > 0)))
 		mlx_put_image_to_window(data->mlx, data->win, data->tree, x, y);
 	if (c == '0')
 		mlx_put_image_to_window(data->mlx, data->win, data->grass, x, y);
@@ -54,8 +60,6 @@ void	ft_choose_img(t_data *data, char c, int x, int y)
 		mlx_put_image_to_window(data->mlx, data->win, data->pright, x, y);
 	if (c == 'D')
 		mlx_put_image_to_window(data->mlx, data->win, data->pleft, x, y);
-	if (c == 'M')
-		ft_sprite_monster(data);
 }
 
 int	ft_choose_xyvalue(int x, int y, int a)
@@ -83,15 +87,25 @@ int	ft_sprite_monster(t_data *data)
 {
 	int			y;
 	int			x;
-	long int	i;
+	static int	img;
+	static int	i;
 
-	i = 0;
 	ft_get_posm(data->map, &y, &x);
 	x = x * 64;
 	y = y * 64;
-	while (i++ < 92233720)
-		;
-	ft_choose_sprite(data, x, y);
+	i++;
+	ft_choose_sprite(data, x, y, img);
+	if (img == 3 && i == 5)
+	{
+		img = 0;
+		i = 0;
+		ft_ia(data->map);
+	}
+	else if (i == 5)
+	{
+		img++;
+		i = 0;
+	}
 	return (0);
 }
 
@@ -120,5 +134,4 @@ void	ft_print_map(t_data *data)
 		y = ft_choose_xyvalue(x, y, 0);
 		i++;
 	}
-	ft_print_footsteps(data, 'b');
 }

@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 20:07:56 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/17 22:15:09 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/18 18:14:10 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ void	ft_get_posm(char **map, int *line, int *column);
 int		ft_sprite_monster(t_data *data);
 void	ft_ia(char **map);
 void	ft_img_init2(t_data *data);
-void	ft_choose_sprite(t_data *data, int x, int y);
-void	ft_exit(char **map);
+void	ft_choose_sprite(t_data *data, int x, int y, int img);
+int		ft_exit(char **map);
+void	ft_move(char **map, int c, int x, int y);
+int		ft_sens(int sens, char d);
+int		ft_check_player(char c, char **map, int x, int y);
 
 #endif 

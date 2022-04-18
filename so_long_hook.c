@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 17:03:54 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/17 21:29:43 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/18 12:16:28 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ void	ft_go_right(t_data *data)
 
 int	ft_key_hook(int keycode, t_data *data)
 {
-	int	i;
-
 	if (keycode == 13)
 		ft_go_up(data);
 	if (keycode == 0)
@@ -99,7 +97,5 @@ int	ft_key_hook(int keycode, t_data *data)
 		ft_go_down(data);
 	if (keycode == 53)
 		ft_exit(data->map);
-	i = *(data->k) + 1;
-	*(data->k) = i;
 	return (0);
 }

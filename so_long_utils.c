@@ -6,7 +6,7 @@
 /*   By: ydumaine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 16:01:46 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/04/17 21:32:59 by ydumaine         ###   ########.fr       */
+/*   Updated: 2022/04/18 18:15:31 by ydumaine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,14 @@ void	ft_print_footsteps(t_data *data, char a)
 	char		*ptr;
 
 	if (a == '+')
+	{
 		foot = foot + 1;
+		ft_printf("\n footsteps : %d", foot);
+	}
+	mlx_put_image_to_window(data->mlx, data->win, data->tree, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->tree, 64, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->tree, 128, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->tree, 192, 0);
 	ptr = ft_itoa(foot);
 	mlx_string_put(data->mlx, data->win, 10, 15, 0x00FFFFFF, "Nombre de pas :");
 	mlx_string_put(data->mlx, data->win, 170, 15, 0x00FFFFFF, ptr);
